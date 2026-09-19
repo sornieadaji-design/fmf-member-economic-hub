@@ -1,0 +1,12 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "CallExpression[callee.property.name='selectAll']",
+        "message": "Select explicit columns — never select * — so officer-only fields never leak to members (CLAUDE.md §6)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * FMF brand palette, taken from the Forum of Makurdi Friends logo:
+ *   navy  ≈ #16225E  (primary, trust)   red ≈ #E5322D  (accent, energy)
+ * Hues are expressed as HSL triples so Tailwind can tint/shade them.
+ */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 230 30% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 230 30% 12%;
+
+  --primary: 230 63% 26%;            /* FMF navy */
+  --primary-foreground: 0 0% 100%;
+  --accent: 2 78% 54%;               /* FMF red */
+  --accent-foreground: 0 0% 100%;
+
+  --secondary: 230 30% 96%;
+  --secondary-foreground: 230 40% 22%;
+  --muted: 230 24% 95%;
+  --muted-foreground: 230 12% 42%;
+
+  --destructive: 2 74% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 230 20% 88%;
+  --input: 230 20% 88%;
+  --ring: 230 63% 26%;
+  --radius: 0.6rem;
+
+  /* Brand hues for gradients, tints and charts */
+  --brand-navy: 230 63% 26%;
+  --brand-navy-dark: 230 63% 15%;
+  --brand-navy-soft: 230 45% 55%;
+  --brand-red: 2 78% 54%;
+  --brand-red-dark: 2 72% 44%;
+  --brand-red-soft: 2 80% 68%;
+}
+
+.dark {
+  --background: 230 40% 8%;
+  --foreground: 230 20% 96%;
+  --card: 230 38% 11%;
+  --card-foreground: 230 20% 96%;
+
+  --primary: 230 60% 64%;
+  --primary-foreground: 230 45% 12%;
+  --accent: 2 78% 62%;
+  --accent-foreground: 230 45% 10%;
+
+  --secondary: 230 25% 18%;
+  --secondary-foreground: 230 20% 96%;
+  --muted: 230 25% 16%;
+  --muted-foreground: 230 14% 66%;
+
+  --destructive: 2 70% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 230 25% 22%;
+  --input: 230 25% 22%;
+  --ring: 230 60% 64%;
+
+  --brand-navy: 230 60% 64%;
+  --brand-navy-dark: 230 40% 30%;
+  --brand-navy-soft: 230 45% 50%;
+  --brand-red: 2 78% 62%;
+  --brand-red-dark: 2 72% 50%;
+  --brand-red-soft: 2 70% 40%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+}
+
+/* A subtle brand bar used at the top of key screens — navy → red, echoing the logo. */
+.brand-bar {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--brand-navy)) 0%,
+    hsl(var(--brand-navy-soft)) 55%,
+    hsl(var(--brand-red)) 100%
+  );
+}
