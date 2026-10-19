@@ -14,7 +14,11 @@ import { requireSignedIn, requireSelfOrOfficer, AuthorizationError } from "@/lib
  * upgrade and a private store; this route removes raw-URL exposure and adds the access check.
  */
 function blobBase(): string | null {
-  const id = process.env.BLOB_STORE_ID?.replace(/^store_/, "").toLowerCase();
+  // Vercel injects the store id as BLOB_STORE_ID, or — when the store is connected on a
+  // project that already has a BLOB_READ_WRITE_TOKEN — under the prefixed name
+  // BLOB_READ_WRITE_TOKEN_STORE_ID. Accept either so a dashboard-rotated store keeps working.
+  const raw = process.env.BLOB_STORE_ID ?? process.env.BLOB_READ_WRITE_TOKEN_STORE_ID;
+  const id = raw?.replace(/^store_/, "").toLowerCase();
   return id ? `https://${id}.public.blob.vercel-storage.com/` : null;
 }
 
